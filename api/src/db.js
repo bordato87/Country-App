@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
 const {
   DB_USER,
   DB_PASSWORD,
@@ -41,6 +42,33 @@ Country.belongsToMany(Activity, {through: 'country_activity'});
 Activity.belongsToMany(Country, {through: 'country_activity'});
 Activity.belongsToMany(Season, {through: 'activity_season'});
 Season.belongsToMany(Activity, {through: 'activity_season'});
+
+const uploadDb  = async() => {
+  try {
+    const apiData = await axios.get('https://restcountries.eu/rest/v2/all');
+    await apiData.data.map((country)=>
+        Country.create({
+            id: country.alpha3Code,
+            //name: country.name,
+            name: country.translations.es ? country.translations.es : country.name,
+            flag: country.flag,
+            region: country.region ? country.region : 'sin region',
+            capital: country.capital ? country.capital : 'sin capital',
+            subregion: country.subregion,
+            area: country.area ? country.area : 0,
+            population: country.population
+        })
+    )
+    const seasons = ['VERANO', 'OTOÑO', 'INVIERNO', 'PRIMAVERA'];
+    await seasons.map((s)=> Season.create({ name: s }))
+    return console.log('database load successful');
+  }
+  catch(err) {
+    console.log(err);
+  }
+}
+
+uploadDb();
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

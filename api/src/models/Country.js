@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   sequelize.define('country', {
-    alpha3Code: {
+    id: {
       type: DataTypes.STRING(3),
       allowNull: false,
       primaryKey: true
@@ -38,7 +38,9 @@ module.exports = (sequelize) => {
     },
 
     population: {
-      type: DataTypes.STRING
+      type: DataTypes.INTEGER
     },
+  }, {
+    updatedAt: false,
   });
 };
