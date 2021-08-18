@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize, ForeignKeyConstraintError } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -49,17 +49,17 @@ const uploadDb  = async() => {
     await apiData.data.map((country)=>
         Country.create({
             id: country.alpha3Code,
-            //name: country.name,
-            name: country.translations.es ? country.translations.es : country.name,
+            name: country.name,
+            //name: country.translations.es ? country.translations.es : country.name,
             flag: country.flag,
-            region: country.region ? country.region : 'sin region',
-            capital: country.capital ? country.capital : 'sin capital',
+            region: country.region ? country.region : 'no region',
+            capital: country.capital ? country.capital : 'no capital',
             subregion: country.subregion,
             area: country.area ? country.area : 0,
             population: country.population
         })
     )
-    const seasons = ['VERANO', 'OTOÑO', 'INVIERNO', 'PRIMAVERA'];
+    const seasons = ['Winter', 'Autumn', 'Summer', 'Spring'];
     await seasons.map((s)=> Season.create({ name: s }))
     return console.log('database load successful');
   }

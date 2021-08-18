@@ -1,11 +1,25 @@
 const {Router} = require('express');
 const router = Router();
-const {Activity} = require('../db');
+const {Activity, Country} = require('../db');
+
+router.get("/", async (req,res) => {
+    try{
+        const activities = await Activity.findAll({
+            attributes: ['name'],
+            include: { 
+                model: Country,
+                attributes: ['name']
+            }
+        });
+        return activities.length ? res.json(activities) : res.sendStatus(404);
+    }
+    catch (error){
+        res.status(505).send(error);
+    }
+});
 
 router.post("/", async (req, res) => {
     const {name, dificulty, duration, season, id} = req.body;
-    seasonUppercase = season.map(s => s.toUpperCase());
-    idUppercase = id.map(id => id.toUpperCase());
     try{
         const newActivity = await Activity.findOrCreate({
             where: {
@@ -18,8 +32,8 @@ router.post("/", async (req, res) => {
             }
 
         })
-        await newActivity[0].addCountries(idUppercase);
-        await newActivity[0].addSeasons(seasonUppercase);
+        await newActivity[0].addCountries(id);
+        await newActivity[0].addSeasons(season);
         res.status(201).json(newActivity);
     }
     catch (error){

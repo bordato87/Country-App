@@ -1,0 +1,35 @@
+.detail {
+    background-position-x: center;
+    min-height: calc(96vh - 5rem);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.flagDiv {
+    background-position-x: center;
+    margin-top: 45px;
+    width: 15vw;
+}
+.flag {
+    background-position-x: center;
+    width: 20vw;   
+    margin-left: -40px;
+}
+
+.p{
+    flex-direction: row-reverse;
+    border-style: ridge;
+}
+
+.activities{
+    justify-content: center;
+    margin-left: -23vw;
+    width: 60vw;
+    display: flex;
+}
+
+.divActivity {
+    width: 150px;
+    border-style: ridge;
+}

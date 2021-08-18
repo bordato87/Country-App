@@ -1,0 +1,11 @@
+.pagination {
+    display: flex;
+}
+.number{
+    margin:3px;
+    border-style: outset;
+    background-color: rgb(218, 230, 215);
+    width: 25px;
+    height: 20px;
+    cursor:pointer;
+}

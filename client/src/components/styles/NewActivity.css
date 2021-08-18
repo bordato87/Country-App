@@ -1,0 +1,22 @@
+.div_container {
+    min-height: calc(94vh - 5rem);
+}
+
+.input {
+    margin: 10px;
+}
+
+.code {
+    margin: 10px;
+}
+
+.botonX {
+    margin: 4px;
+    border-radius: 15px;
+}
+
+.error {
+    background-position-x: center;
+    color: red;
+    font-size: 15px;
+}
