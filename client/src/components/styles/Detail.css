@@ -12,6 +12,7 @@
     width: 15vw;
 }
 .flag {
+    border-radius: 10px;
     background-position-x: center;
     width: 20vw;   
     margin-left: -40px;

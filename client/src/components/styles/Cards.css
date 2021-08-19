@@ -5,6 +5,17 @@
   justify-content: center;
 }
 
+.divBar{
+  outline: none;
+  background-color:white;
+  margin-top: 10px;
+  width: 150px;
+  border-radius: 35px 0px 35px 0px;
+  -moz-border-radius: 35px 0px 35px 0px;
+  -webkit-border-radius: 35px 0px 35px 0px;
+  border: 2px solid #83ac7bfb;
+}
+
 .linkCard {
   text-decoration: none;
   color: black;

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import Card from './Card';
 import {getCountries, orderByName, filterByRegion, orderByPopulation, filterByActivity, getActivities} from '../actions/index';
 import Pagination from './Pagination';
@@ -9,6 +9,7 @@ import './styles/Cards.css';
 
 function Cards() {
 
+    const history = useHistory()
     const dispatch = useDispatch();    
     useEffect(() => {
         dispatch(getCountries());
@@ -58,13 +59,20 @@ function Cards() {
         e.preventDefault();
         dispatch(getCountries());
     }
+    const handleCountry = (e) => {
+        e.preventDefault()
+        history.push(`/country/${e.target.value}`);
+    }
 
 
     return(
         <div>
-            <div className="divBar">
-            <input placeholder="find country" type="text"/>
-            <select onChange={(e) => handleRegion(e)}>
+            <div >
+            <select onChange={(e) => handleCountry(e)} className="divBar" type="text">
+            <option value="Find Country">Find Country</option>
+                {countries.map(c => <option value={c.id} key={c.name}>{c.name}</option>)}
+            </select>
+            <select className="divBar" onChange={(e) => handleRegion(e)}>
                 <option value=''>Region</option>
                 <option value='Europe'>Europe</option>
                 <option value='Americas'>Americas</option>
@@ -73,21 +81,21 @@ function Cards() {
                 <option value='Oceania'>Oceania</option>
                 <option value='Polar'>Polar</option>
             </select>
-            <select onChange={(e) => handlePopulation(e)}>
+            <select className="divBar" onChange={(e) => handlePopulation(e)}>
                 <option value='UpDown'>Population</option>
                 <option value='Up'>Higher</option>
                 <option value='Down'>Lower</option>
             </select>
-            <select onChange={(e) => handleSort(e)}>
+            <select className="divBar" onChange={(e) => handleSort(e)}>
                 <option value="A-Z">A-Z</option>
                 <option value="AtoZ">AtoZ</option>
                 <option value='ZtoA'>ZtoA</option>
             </select>
-            <select onChange={(e) => handleActivity(e)}>
+            <select className="divBar" onChange={(e) => handleActivity(e)}>
                 <option value="Activities">Activities</option>
                 {activities.map(a => <option value={a.name} key={a.name}>{a.name}</option>)}
             </select>
-            <button onClick={(e) => handleClick(e)}>Reload</button>
+            <button className="divBar" onClick={(e) => handleClick(e)}>Reload</button>
         </div>
             <div className="container">
             {currentCountry?.map((country) => {

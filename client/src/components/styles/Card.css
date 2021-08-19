@@ -16,6 +16,7 @@
 }
 
 .img {
+    border-radius: 10px;
     width: 15vh;
     height: 10vh;
 }
