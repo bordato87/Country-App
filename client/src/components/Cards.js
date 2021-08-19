@@ -19,6 +19,7 @@ function Cards() {
     }, [dispatch]);
     const activities = useSelector(state => state.activities);
     const countries = useSelector(state => state.countries);
+    const countriesLoaded = useSelector(state => state.countriesLoaded);
     const [alphabet, setAlphabet]= useState('');
     const [region, setRegion]= useState('');
     const [population, setPopulation]= useState('')
@@ -70,7 +71,7 @@ function Cards() {
             <div >
             <select onChange={(e) => handleCountry(e)} className="divBar" type="text">
             <option value="Find Country">Find Country</option>
-                {countries.map(c => <option value={c.id} key={c.name}>{c.name}</option>)}
+                {countriesLoaded.map(c => <option value={c.id} key={c.name}>{c.name}</option>)}
             </select>
             <select className="divBar" onChange={(e) => handleRegion(e)}>
                 <option value=''>Region</option>
