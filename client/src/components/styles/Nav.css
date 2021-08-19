@@ -7,6 +7,8 @@
 }
 
 .cont {   
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
     background-color: #83ac7bfb;
     padding: 10px;
 }

@@ -1,4 +1,6 @@
 .footer{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     height: 5rem;
     background-color: #83ac7bfb;
 }

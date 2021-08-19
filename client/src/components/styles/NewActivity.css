@@ -11,6 +11,7 @@
     -moz-border-radius: 35px 0px 35px 0px;
     -webkit-border-radius: 35px 0px 35px 0px;
     border: 2px solid #83ac7bfb;
+    text-align-last: center;
 }
 
 .code {
@@ -18,6 +19,9 @@
 }
 
 .botonX {
+    border: 2px solid #83ac7bfb;
+    cursor:pointer;
+    background-color: rgb(242, 243, 231);
     margin: 4px;
     border-radius: 15px;
 }
@@ -33,5 +37,11 @@
 }
 
 .btn {
+    border: 2px solid #83ac7bfb;
+    background-color: rgb(242, 243, 231);
     cursor:pointer;
+}
+
+.option {
+    text-align: center;
 }

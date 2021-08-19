@@ -6,6 +6,8 @@
 }
 
 .divBar{
+  text-align-last: center;
+  text-align: center;
   outline: none;
   background-color:white;
   margin-top: 10px;
