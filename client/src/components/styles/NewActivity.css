@@ -31,3 +31,7 @@
 .inputC {
     margin: 10px; 
 }
+
+.btn {
+    cursor:pointer;
+}

@@ -2,13 +2,15 @@
     position: absolute;
     height: 100vh;
     width: 100%;
-    background-image: url(../img/mundo.jpg);
+    background-image: url(../img/countries.png);
+    background-size: 50% 50%;
     background-repeat: no-repeat;
-    background-color: white;
+    background-color: rgb(237, 238, 225);
     background-position-x: center;
     background-position-y: center;
 }
 
 .button{
     text-decoration: none;
+    cursor:pointer;
 }

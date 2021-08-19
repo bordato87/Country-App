@@ -140,7 +140,7 @@ function NewActivity() {
                     {!errors.season ? null :
                         <p className="error">{errors.season}</p>}
                 </div>
-                <button type="submit">Submit</button>
+                <button className="btn" type="submit">Submit</button>
             </form>
         </div>
     );
