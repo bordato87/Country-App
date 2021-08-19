@@ -6,11 +6,6 @@ import './styles/Home.css';
 
 function Home() {
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getCountries())
-    }, [dispatch]);
-
     return (
     <div className='divHome'>
         <Cards/>

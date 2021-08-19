@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {postActivity} from '../actions/index';
+import {getCountries, postActivity} from '../actions/index';
 import './styles/NewActivity.css';
 
 function NewActivity() {
 
     const history = useHistory()
     const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getCountries())
+    }, [dispatch]);
     const countries = useSelector((state) => state.countries);
     const [errors, setErrors] = useState({name:""});
     const [input, setInput] = useState({
@@ -117,7 +120,9 @@ function NewActivity() {
                 </div>
                 <div>
                     <label>Country:</label>
-                    <select className="input" onChange={(e)=>handleCountry(e)}>{countries.map(c => <option value={c.id} key={c.name}>{c.name}</option>)}</select>
+                    <select className="input" onChange={(e)=>handleCountry(e)}>
+                        <option value="Countries">Select Countries</option>{countries.map(c => <option value={c.id} key={c.name}>{c.name}</option>)}
+                        </select>
                     <a>{input.id.map(c => 
                         <div className="code" key={c + "_key"}>{c}<button value={c}className="botonX" onClick={(c)=>handleDelete(c)}>x</button></div>)}
                     </a>
@@ -127,7 +132,7 @@ function NewActivity() {
                 <div>
                     <label>Season:</label>
                 </div>
-                <div className="input">
+                <div className="inputC">
                     <label>Winter<input name="season" type="checkbox" id="Winter" value="Winter" onChange={(e)=>handleCheck(e)} /></label>
                     <label>Autumn<input name="season" type="checkbox" id="Autumn" value="Autumn" onChange={(e)=>handleCheck(e)} /></label>
                     <label>Summer<input name="season" type="checkbox" id="Summer" value="Summer" onChange={(e)=>handleCheck(e)} /></label>

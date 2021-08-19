@@ -17,7 +17,6 @@ function App() {
       <Route path="/country/:id" component={Detail} />
       <Route path="/country" component={Footer} />
       <Route path="/home" component={Nav} />
-      <Route path="/home" component={Filters} />
       <Route path="/home" component={Home} />
       <Route path="/home" component={Footer} />
       <Route path="/add" component={Nav} />

@@ -3,7 +3,12 @@
 }
 
 .input {
+    text-align: center;
     margin: 10px;
+    border-radius: 35px 0px 35px 0px;
+    -moz-border-radius: 35px 0px 35px 0px;
+    -webkit-border-radius: 35px 0px 35px 0px;
+    border: 2px solid #83ac7bfb;
 }
 
 .code {
@@ -19,4 +24,8 @@
     background-position-x: center;
     color: red;
     font-size: 15px;
+}
+
+.inputC {
+    margin: 10px; 
 }

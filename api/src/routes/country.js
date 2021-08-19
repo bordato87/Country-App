@@ -54,7 +54,11 @@ router.get("/", async (req, res) => {
         }
         else {
             const countries = await Country.findAll({
-                attributes: ['id', 'name', 'flag', 'region']
+                attributes: ['id', 'name', 'flag', 'region', 'population'],
+                include: { 
+                    model: Activity,
+                    attributes: ['name']
+                }
             })
             return countries.length ? res.json(countries) : res.sendStatus(404);
         }

@@ -33,7 +33,7 @@ function Detail(props) {
                             <p>Dificulty: {activity.dificulty}</p>
                             <p>Seasons:{activity.seasons.map(s=> <li>{s.name}</li>)}</p>
                             </div>)  :
-                            <a>There are no activities</a>
+                            <p>There are no activities...</p>
                             }
                         </div>
                 </span>
