@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Sequelize, ForeignKeyConstraintError } = require('sequelize');
+const { Sequelize} = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');

@@ -2,7 +2,7 @@ const {Router} = require('express');
 const router = Router();
 const {Activity, Country} = require('../db');
 
-router.get("/", async (req,res) => {
+router.get("/", async (req, res, next) => {
     try{
         const activities = await Activity.findAll({
             attributes: ['name'],
@@ -14,11 +14,11 @@ router.get("/", async (req,res) => {
         return activities.length ? res.json(activities) : res.sendStatus(404);
     }
     catch (error){
-        res.status(505).send(error);
+        next(error)
     }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", async (req, res, next) => {
     const {name, dificulty, duration, season, id} = req.body;
     try{
         const newActivity = await Activity.findOrCreate({
@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
         res.status(201).json(newActivity);
     }
     catch (error){
-        res.status(505).send(error);
+        next(error)
     }
 });
 

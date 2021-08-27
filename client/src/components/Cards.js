@@ -59,6 +59,7 @@ function Cards() {
     const handleClick = (e) => {
         e.preventDefault();
         dispatch(getCountries());
+        dispatch(getActivities());
     }
     const handleCountry = (e) => {
         e.preventDefault()
@@ -110,8 +111,10 @@ function Cards() {
                     </Link>
                 )})
             }
-            </div>
-            <Pagination className="pagination" countriesPerPage={countriesPerPage} allCountries={countries.length} pagination={pagination}/>
+            </div>{countries.length < 9 ? 
+                <div></div> :
+                <Pagination className="pagination" countriesPerPage={countriesPerPage} allCountries={countries.length} pagination={pagination}/>
+            }
         </div>
     );
 }
